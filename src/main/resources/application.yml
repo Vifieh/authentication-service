@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: id-card-service
+  datasource:
+    username: ''
+    url: jdbc:mysql://localhost:3306/id-card-service?serverTimezone=GMT
+    password: ''
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  security:
+    user:
+      name: 'user'
+      password: 'user'
+attendance:
+  app:
+    jwtSecret: 'secret'
+    jwtExpirationMs: '86400000'
+    jwtRefreshExpirationMs: '86400000'

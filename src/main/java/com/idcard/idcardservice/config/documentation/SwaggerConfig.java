@@ -38,7 +38,7 @@ public class SwaggerConfig {
                 .securitySchemes(Arrays.asList(apiKey()))
                 .apiInfo(getApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.reservation.reservationservice"))
+                .apis(RequestHandlerSelectors.basePackage("com.idcard.idcardservice"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -46,8 +46,8 @@ public class SwaggerConfig {
     private ApiInfo getApiInfo() {
         Contact contact = new Contact("Vifieh Ruth", "-", "vifiehruth@gmail.com");
         return new ApiInfoBuilder()
-                .title("Reservation API")
-                .description("Documentation reservation api")
+                .title("ID-CARD API")
+                .description("Documentation id-card api")
                 .version("1.0.0")
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
