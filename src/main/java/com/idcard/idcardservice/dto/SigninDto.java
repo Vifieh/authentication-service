@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Vifieh Ruth
@@ -35,4 +36,7 @@ public class SigninDto {
         this.email = email;
         this.role = role;
     }
+
+//    public SigninDto(String jwt, String token, UUID id, Instant expiryDate, String username, List<String> roles) {
+//    }
 }

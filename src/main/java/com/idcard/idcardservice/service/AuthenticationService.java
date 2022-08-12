@@ -4,6 +4,7 @@ import com.idcard.idcardservice.dto.SigninDto;
 import com.idcard.idcardservice.dto.SigninPayload;
 import com.idcard.idcardservice.dto.SignupPayload;
 import com.idcard.idcardservice.model.RefreshToken;
+import com.idcard.idcardservice.model.User;
 
 import java.util.Optional;
 
@@ -23,5 +24,9 @@ public interface AuthenticationService {
     RefreshToken verifyExpiration(RefreshToken token);
 
     Optional<RefreshToken> findByToken(String token);
+
+    User getUserById(String userId);
+
+    void checkUsername(String username);
 
 }
