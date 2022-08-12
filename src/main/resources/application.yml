@@ -5,9 +5,9 @@ spring:
   application:
     name: id-card-service
   datasource:
-    username: ''
+    username: root
     url: jdbc:mysql://localhost:3306/id-card-service?serverTimezone=GMT
-    password: ''
+    password:
   jpa:
     properties:
       hibernate:
@@ -20,7 +20,7 @@ spring:
     user:
       name: 'user'
       password: 'user'
-attendance:
+id-card:
   app:
     jwtSecret: 'secret'
     jwtExpirationMs: '86400000'

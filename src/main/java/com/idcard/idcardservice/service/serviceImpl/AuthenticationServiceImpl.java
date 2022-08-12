@@ -43,10 +43,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final RoleServiceImpl roleService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
-    private final UserDetailsServiceImpl userDetailsService;
+    private final UserServiceImpl userService;
 
 
-    @Value("${attendance.app.jwtRefreshExpirationMs}")
+    @Value("${id-card.app.jwtRefreshExpirationMs}")
     private Long refreshTokenDurationMs;
 
 
@@ -58,7 +58,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setUsername(signupPayload.getUsername());
         user.setEmail(signupPayload.getEmail());
         user.setPassword(passwordEncoder.encode(signupPayload.getPassword()));
-        if (signupPayload.getRole().toString().equals("ROLE_STUDENT")) {
+        if (signupPayload.getRole().toString().equals("ROLE_USER")) {
             roleList.add(roleService.getRoleByName(ERole.ROLE_USER));
         }
         user.setRoles(roleList);
@@ -68,7 +68,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public SigninDto signinUser(SigninPayload signinPayload) {
-        userDetailsService.loadUserByUsername(signinPayload.getUsername());
+        userService.checkUsername(signinPayload.getUsername());
 
         Authentication authentication;
         try{

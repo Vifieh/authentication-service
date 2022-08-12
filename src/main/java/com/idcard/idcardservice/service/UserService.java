@@ -9,4 +9,6 @@ public interface UserService {
 
     User getUser(String userId);
 
+    User checkUsername(String username);
+
 }

@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: reservation-service
+  datasource:
+    username: 'vifieh'
+    password: 'password'
+    url: jdbc:postgresql://localhost:5432/id-card-service
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multipart:
+#      max-file-size: '5000KB'
+#      max-request-size: '5000KB'
+      enabled: true
+  security:
+    user:
+      name: 'user'
+      password: 'user'
+  mail:
+    host: localhost
+    port: 1025
+    username: reservation
+    password: reservation
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+banner:
+  location: 'banner.txt'
+id-card:
+  app:
+    jwtSecret: 'secret'
+    jwtExpirationMs: '86400000'
+    jwtRefreshExpirationMs: '86400000'
+    baseUrlLocal: 'http://localhost:8080/'

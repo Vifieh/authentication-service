@@ -4,8 +4,9 @@ import com.idcard.idcardservice.config.security.JwtUtils;
 import com.idcard.idcardservice.dto.*;
 import com.idcard.idcardservice.exception.TokenRefreshException;
 import com.idcard.idcardservice.model.RefreshToken;
-import com.idcard.idcardservice.service.AuthenticationService;
+import com.idcard.idcardservice.service.serviceImpl.AuthenticationServiceImpl;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,14 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class AuthenticationController {
 
-    private final AuthenticationService authenticationService;
-
+    private final AuthenticationServiceImpl authenticationService;
     private final JwtUtils jwtUtils;
 
-    String message = null;
 
     @PostMapping("register")
     public ResponseEntity<ResponseMessage> register(@Valid @RequestBody SignupPayload signupPayload) {
         authenticationService.register(signupPayload);
-        message = "User registered Successfully!";
-        return new ResponseEntity<>(new ResponseMessage(message), HttpStatus.CREATED);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("login")

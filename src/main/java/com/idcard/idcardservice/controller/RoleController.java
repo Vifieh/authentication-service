@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @CrossOrigin
 @RestController
 @AllArgsConstructor
-
 public class RoleController {
 
     private final RoleServiceImpl roleService;
@@ -28,21 +27,17 @@ public class RoleController {
     @Autowired
     ModelMapper modelMapper;
 
-    String message = null;
-
     @PostMapping("roles")
-    public ResponseEntity<ResponseMessage> createRole(@RequestBody RolePayload rolePayload) {
+    public ResponseEntity<?> createRole(@RequestBody RolePayload rolePayload) {
         roleService.createRole(rolePayload);
-        message = "Role created successfully!";
-        return new ResponseEntity<>(new ResponseMessage(message), HttpStatus.CREATED);
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("roles/{roleId}")
-    public ResponseEntity<ResponseMessage> editRole(@PathVariable("roleId") String roleId,
+    public ResponseEntity<?> editRole(@PathVariable("roleId") String roleId,
                                                        @RequestBody RolePayload rolePayload) {
         roleService.editRole(roleId, rolePayload);
-        message = "Role edited successfully";
-        return new ResponseEntity<>(new ResponseMessage(message), HttpStatus.ACCEPTED);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("roles")
@@ -61,10 +56,9 @@ public class RoleController {
     }
 
     @DeleteMapping("roles/{roleId}")
-    public ResponseEntity<ResponseMessage> deleteRole(@PathVariable("roleId") String roleId) {
+    public ResponseEntity<?> deleteRole(@PathVariable("roleId") String roleId) {
         roleService.deleteRole(roleId);
-        message = "Role deleted successfully";
-        return new ResponseEntity<>(new ResponseMessage(message) , HttpStatus.OK);
+        return ResponseEntity.noContent().build();
     }
 
 }
